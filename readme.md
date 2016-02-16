@@ -9,7 +9,7 @@ This app reminds user of his/her tasks, especially such as study and homework. I
 - Take picture
 
 ### not yet
-- Notify (unable to run as a service with PhoneGap)
+- Notify (unable to run as a service with PhoneGap...)
 - Post a tweet on twitter
 
 ![Usecase Diagram](docs/usecase.jpg)
@@ -25,9 +25,11 @@ This app reminds user of his/her tasks, especially such as study and homework. I
 - AngularJS
 
 ## Build & Run
-* %> ionic platform add android
-* %> ionic build android
-* %> ionic run android
+* %> cordova platform add android
+* %> cordova build android
+* %> cordova run android
+* probably able to use ionic and phonegap instead of cordova
+* also, this may work: %> phonegap remote build android
 
-## Memo
-- Unable to use camera when building with PhoneGap Build
+## Note
+- Unable to use camera when building with PhoneGap Build...
