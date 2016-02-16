@@ -7,9 +7,14 @@ This app reminds user of his/her tasks, especially such as study and homework. I
 - Modify registered task
 - Update task status
 - Take picture
+
 ### not yet
 - Notify (unable to run as a service with PhoneGap)
 - Post a tweet on twitter
+
+![Usecase Diagram](docs/usecase.jpg)
+![Activity Diagram](docs/activity.jpg)
+
 
 ## Environment
 - Android
@@ -20,9 +25,9 @@ This app reminds user of his/her tasks, especially such as study and homework. I
 - AngularJS
 
 ## Build & Run
-%> ionic platform add android
-%> ionic build android
-%> ionic run android
+* %> ionic platform add android
+* %> ionic build android
+* %> ionic run android
 
 ## Memo
 - Unable to use camera when building with PhoneGap Build
