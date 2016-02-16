@@ -25,6 +25,7 @@ This app reminds user of his/her tasks, especially such as study and homework. I
 - AngularJS
 
 ## Build & Run
+* %> cordova plugin add org.apache.cordova.camera
 * %> cordova platform add android
 * %> cordova build android
 * %> cordova run android
