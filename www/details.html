@@ -1,0 +1,158 @@
+<ion-header-bar align-title="left" class="bar-positive">
+  <div class="buttons">
+    <a class="button button-icon icon ion-chevron-left" href="#/"> Back</a>
+  </div>
+  <h1 class="title"></h1>
+  <div class="buttons">
+    <button class="button button-icon icon ion-archive" ng-click="save()"></button>
+    <button class="button button-icon icon ion-trash-a" ng-click="delete()"></button>
+  </div>
+</ion-header-bar>
+
+<ion-content class="padding">
+  <h2>{{item.title}}</h2>
+  <div ng-if="isNew == 'false'">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <div ng-if="item.status == STATUS_NOT_WORKING">
+          <button class="button button-block ion-play button-calm" ng-click="start()"> START</button>
+        </div>
+        <div ng-if="item.status == STATUS_COMING">
+          <button class="button button-block ion-play button-positive" ng-click="start()"> START</button>
+        </div>
+        <div ng-if="item.status == STATUS_WORKING">
+          <button class="button button-block ion-play button-balanced" ng-click="finish()"> FINISH</button>
+        </div>
+        <div ng-if="item.status == STATUS_FORGET_START">
+          <button class="button button-block ion-play button-assertive" ng-click="start()"> START</button>
+        </div>
+        <div ng-if="item.status == STATUS_FORGET_END">
+          <button class="button button-block ion-play button-energized" ng-click="start()"> FINISH</button>
+        </div>
+      </div>
+     <div class="col"></div>
+    </div>
+  </div>
+
+
+  <div class="list">
+    <label class="item item-input">
+      <span class="input-label">Title:</span>
+      <textarea placeholder="Title" rows="3" ng-model="item.title" ng-Required="true" name="title"></textarea>
+    </label>
+
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Repeat:
+      </div>
+      <select ng-model="item.repeat" name="repeate">
+        <option selected>{{REPEAT_WEEKLY}}</option>
+        <option>{{REPEAT_EVERYDAY}}</option>
+        <option>{{REPEAT_SPECIFIC}}</option>
+      </select>
+    </label>
+
+    <div ng-if="item.repeat == REPEAT_WEEKLY">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Days of the week:
+        </div>
+        <select ng-model="item.date_weekly" name="date_weekly">
+          <option selected>{{DATE_WEEKLY_MONDAY}}</option>
+          <option>{{DATE_WEEKLY_TUESDAY}}</option>
+          <option>{{DATE_WEEKLY_WEDNESDAY}}</option>
+          <option>{{DATE_WEEKLY_THURSDAY}}</option>
+          <option>{{DATE_WEEKLY_FRIDAY}}</option>
+          <option>{{DATE_WEEKLY_SATURDAY}}</option>
+          <option>{{DATE_WEEKLY_SUNDAY}}</option>
+        </select>
+      </label>
+    </div>
+
+    <div ng-if="item.repeat == REPEAT_SPECIFIC">
+      <label class="item item-input">
+        <span class="input-label">Date:</span>
+        <input type="date" ng-model="dateSpecificObject" id="date_specific" name="date_specific">
+      </label>
+    </div>
+
+    <label class="item item-input">
+      <span class="input-label">Time:</span>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          {{item.time*1000 | date:'hh:mm a':'+0000'}}
+          <ionic-timepicker input-obj="timePickerObject">
+            <button class=" ion-ios-alarm-outline">
+              <standard-time-meridian etime='timePickerObject.inputEpochTime'></standard-time-meridian>
+            </button>
+          </ionic-timepicker>
+        </div>
+        <div class="col"></div>
+      </div>
+    </label>
+
+    <label class="item item-select">
+      <div class="input-label">
+        Duration:
+      </div>
+      <select ng-model="item.duration" id="duration" name="duration">
+        <option value=0.0>Start time only</option>
+        <option value=0.5>00:30</option>
+        <option value=1.0>01:00</option>
+        <option value=1.5>01:30</option>
+        <option value=2.0>02:00</option>
+        <option value=2.5>02:30</option>
+        <option value=3.0>03:00</option>
+        <option value=3.5>03:30</option>
+        <option value=4.0>04:00</option>
+        <option value=4.5>04:30</option>
+        <option value=5.0>05:00</option>
+        <option value=5.5>05:30</option>
+        <option value=6.0>06:00</option>
+        <option value=6.5>06:30</option>
+        <option value=7.0>07:00</option>
+        <option value=7.5>07:30</option>
+        <option value=8.0>08:00</option>
+        <option value=8.5>08:30</option>
+        <option value=9.0>09:00</option>
+        <option value=9.5>09:30</option>
+        <option value=10.0>10:00</option>
+        <option value=10.5>10:30</option>
+        <option value=11.0>11:00</option>
+        <option value=11.5>11:30</option>
+        <option value=12.0>12:00</option>
+      </select>
+    </label>
+
+<!--
+    <label class="item item-toggle">
+      <span class="input-label">tweet:</span>
+      <label class="toggle toggle-calm">
+        <input type="checkbox" ng-model="item.isTweet" ng-true-value="'true'" ng-false-value="'false'">
+        <div class="track">
+          <div class="handle"></div>
+        </div>
+      </label>
+    </label>
+-->
+    <label class="item item-toggle">
+      <span class="input-label">Active:</span>
+      <label class="toggle toggle-balanced">
+        <input type="checkbox" ng-model="item.isActive" ng-true-value="'true'" ng-false-value="'false'">
+        <div class="track">
+          <div class="handle"></div>
+        </div>
+      </label>
+    </label>
+  </div>
+
+  <h3>Record</h3>
+  <ul class="list" >
+      <li class="item" ng-repeat="recordItem in item.record">
+        <p>{{recordItem}}</p>
+      </li>
+  </ul>
+
+</ion-content>

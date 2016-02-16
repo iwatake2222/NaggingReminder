@@ -1,0 +1,35 @@
+<ion-header-bar align-title="left" class="bar-positive">
+  <h1 class="title">Nagging Reminder</h1>
+  <div class="buttons">
+    <a class="button button-icon icon ion-plus-circled" href="#/details/"></a>
+    <a class="button button-icon icon ion-settings" href="#/settings/"></a>
+  </div>
+</ion-header-bar>
+
+<ion-content>
+  <ion-list>
+    <ion-item ng-repeat="item in items" href="#/details/{{item.id}}">
+      <div class="item item-button-right">
+        <h2>{{item.title}}</h2>
+        <p><i class="icon ion-clock"> {{item.duration}} hours</i></p>
+        <p>
+          <i class="icon ion-calendar"></i>
+          <span ng-if="item.repeat == REPEAT_EVERYDAY">Everyday</span>
+          <span ng-if="item.repeat == REPEAT_WEEKLY">{{item.date_weekly}}</span>
+          <span ng-if="item.repeat == REPEAT_SPECIFIC">{{item.dateSpecificDisplay}}</span>
+          , {{item.time*1000 | date:'hh:mm a':'+0000'}}
+        </p>
+        <div class="buttons">
+          <span ng-if="item.status == STATUS_COMING"><i class="icon ion-play"> soon</i></span>
+          <span ng-if="item.status == STATUS_WORKING"><i class="icon ion-load-a"> working</i></span>
+          <span ng-if="item.status == STATUS_FORGET_START"><i class="icon ion-play"> time to start</i></span>
+          <span ng-if="item.status == STATUS_FORGET_END"><i class="icon ion-stop"> time to finish</i></span>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <a class="button button-icon icon ion-plus-circled" href="#/details/"> Create New</a>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
