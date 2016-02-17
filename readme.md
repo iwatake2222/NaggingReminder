@@ -1,6 +1,8 @@
 # Nagging Reminder (Prototype)
 This app reminds user of his/her tasks, especially such as study and homework. In order to make it sure that the user REALLY starts/finishes the task, the user has to take a picture related to the task as an evidence (e.g. text book). Then, the app automatically posts it on twitter so that his/her friends can check it. It may also motivate the user.
 
+<https://build.phonegap.com/apps/1917182/share>
+
 ## Functions
 ### implemented
 - Register a task
