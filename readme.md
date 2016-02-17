@@ -32,5 +32,4 @@ This app reminds user of his/her tasks, especially such as study and homework. I
 * probably able to use ionic and phonegap instead of cordova
 * also, this may work: %> phonegap remote build android
 
-## Note
-- Unable to use camera when building with PhoneGap Build...
+
